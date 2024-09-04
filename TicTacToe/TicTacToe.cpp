@@ -10,15 +10,22 @@
 int main()
 {
     std::array< std::array<std::string, 5>, 5> grid{ "" };
+
     initialiseGrid(grid);
+    printGrid(grid);
+
+
+
+}
+
+void printGrid(std::array< std::array<std::string, 5>, 5>& grid){
 
     for (auto row : grid)
     {
         for (auto element : row)
             std::cout << element;
         std::cout << std::endl;
-}
-
+    }
 }
 
 void initialiseGrid(std::array< std::array<std::string, 5>, 5>& grid) {

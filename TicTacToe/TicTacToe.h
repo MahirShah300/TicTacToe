@@ -5,3 +5,5 @@
 
 
 void initialiseGrid(std::array< std::array<std::string, 5>, 5>& grid);
+
+void printGrid(std::array< std::array<std::string, 5>, 5>& grid);
