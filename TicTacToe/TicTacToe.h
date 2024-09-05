@@ -1,5 +1,5 @@
 #pragma once
-#include "Grid.h"
+#include "Game.h"
 #include <iostream>
 #include <array>
 #include "string"
