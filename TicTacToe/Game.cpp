@@ -1,6 +1,8 @@
 #include "Game.h"
 
-Game::Game()
+
+
+Game::Game() : whichPlayer{PLAYERONE}
 {
     for (int i = 0; i < 5; i++)
     {
@@ -26,40 +28,50 @@ void Game::printGrid()
 void Game::placeMarker()
 {
     int choice{ 0 };
+    bool correctChoice{ false };
+    while (!correctChoice) {
+        std::cout << "Choose where to place the marker: ";
+        std::cin >> choice;
 
-    std::cout << "Choose where to place the marker: ";
-    std::cin >> choice;
+        if (choice < 1 || choice > 9) {
+            std::cout << "Invalid Choice, please choose a number between 1 and 9" << std::endl;
+        }
 
-    if (choice < 1 || choice > 0){
-        std::cout << "Invalid Choice, please choose a number between 1 and 9" << std::endl;
-        placeMarker();
-    }
+        else if (choice <= 3 && choice >= 1) {
+            if (checkPositionOpen(FIRSTROW, (2 * choice) - 2, correctChoice)) {    
+                grid[FIRSTROW][(2 * choice) - 2] = " x ";                       // 1 2 3 --- choice
+            }                                                                   // 0 2 4 --- grid column index
+        }                                                                       // 2n - 2 gives the column index for given choice
 
-    else if (choice <= 3 && choice >= 1)
-    {                                                                       // 1 2 3 --- choice
-        grid[0][(2 * choice) - 2] = " x ";                                  // 0 2 4 --- grid column index
-    }                                                                       // 2n - 2 gives the column index for given choice
+        else if (choice <= 6 && choice >= 4) {
+            if (checkPositionOpen(SECONDROW, (2 * choice) - 8, correctChoice)) {
+                grid[SECONDROW][(2 * choice) - 8] = " x ";                      // 4 5 6 --- choice
+            }                                                                   // 0 2 4 --- grid column index
+        }                                                                       // 2n - 4 gives the column index for given choice
 
-    else if (choice <= 6 && choice >= 4)
-    {                                                                       // 4 5 6 --- choice
-        grid[2][(2 * choice) - 8] = " x ";                                  // 0 2 4 --- grid column index
-    }                                                                       // 2n - 4 gives the column index for given choice
-
-    else if (choice <= 9 && choice >= 7)
-    {                                                                       // 7 8 9
-        grid[4][(2 * choice) - 14] = " x ";                                 // 0 2 4 --- grid column index
-    }                                                                       // 2n-14 --- gives the column index for given choice
-    else
-    {
-        std::cout << "Invalid Choice, please choose a number between 1 and 9" << std::endl;
-        placeMarker();
+        else if (choice <= 9 && choice >= 7) {
+            if (checkPositionOpen(THIRDROW, (2 * choice) - 14, correctChoice)) {
+                grid[THIRDROW][(2 * choice) - 14] = " x ";                      // 7 8 9 --- choice
+            }                                                                   // 0 2 4 --- grid column index
+        }                                                                       // 2n-14 --- gives the column index for given choice
+        else
+        {
+            std::cout << "Invalid Choice, please choose a number between 1 and 9" << std::endl;
+        }
     }
 }
 
-void Game::checkPosition(int row, int column)
+bool Game::checkPositionOpen(ROW row, int column, bool& correctChoice)
 {
     if (grid[row][column] != "   ") {
-        std::cout << "This position has already been, used. Please make another choice";
-        placeMarker();
+        std::cout << "This position has already been, used. Please make another choice" << std::endl;
+        printGrid();
+        return correctChoice;
+    }
+
+    else{
+
+        correctChoice = !correctChoice;
+        return correctChoice;
     }
 }

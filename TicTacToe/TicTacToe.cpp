@@ -14,4 +14,7 @@ int main()
     game.placeMarker();
     game.printGrid();
 
+    game.placeMarker();
+    game.printGrid();
+
 }
