@@ -7,7 +7,7 @@
 
 int main()
 {
- 
+    /*
     Game game;
     game.printGrid();
 
@@ -16,5 +16,8 @@ int main()
 
     game.placeMarker();
     game.printGrid();
+    */
 
+    Marker test;
+    std::cout << test.getxOrO();
 }
