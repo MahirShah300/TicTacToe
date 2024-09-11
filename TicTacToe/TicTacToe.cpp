@@ -18,6 +18,7 @@ int main()
     game.printGrid();
     */
 
-    Marker test;
-    std::cout << test.getxOrO();
+    Game game;
+
+    game.placeMarkerMark();
 }

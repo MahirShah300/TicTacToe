@@ -1,7 +1,15 @@
 #include "Marker.h"
 
-Marker::Marker() : xOrO{"   "}, isEmpty{true}
+Marker::Marker() : mark{"   "}, isEmpty{true}
 {
+}
+
+void Marker::takeMark(PLAYER player)
+{
+	if (player == PLAYERONE)
+		mark = " X ";
+	else
+		mark = " O ";
 }
 
 bool Marker::getIsEmpty()
@@ -9,7 +17,7 @@ bool Marker::getIsEmpty()
 	return isEmpty;
 }
 
-std::string Marker::getxOrO()
+std::string Marker::getMark()
 {
-	return xOrO;
+	return mark;
 }

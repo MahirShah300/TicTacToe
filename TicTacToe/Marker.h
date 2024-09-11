@@ -1,5 +1,5 @@
 #pragma once
-#include "string"
+#include "Game.h"
 
 
 class Marker
@@ -7,12 +7,13 @@ class Marker
 public:
 
 	Marker();
+	void takeMark(PLAYER player);
 	bool getIsEmpty();
-	std::string getxOrO();
+	std::string getMark();
 
 private:
 
 	bool isEmpty;
-	std::string xOrO;
+	std::string mark;
 };
 
