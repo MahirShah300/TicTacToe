@@ -25,7 +25,7 @@ Game::Game() : whichPlayer{PLAYERONE}
         }
         else
             for (int j = 0; j < 5; j++)
-                gridMarker[i][j].setMark("-----------");
+                gridMarker[i][j].setMark("--");
     }
 }
 
@@ -39,16 +39,18 @@ void Game::printGrid()
     }
     std::cout << std::endl;
 }
-/*
+
 void Game::printGridMarker()
 {
     for (auto row : gridMarker)
     {
-        for(auto element: row)
-            std::cout << 
+        for (auto element : row)
+            std::cout << element.getMark();
+        std::cout << std::endl;
     }
+    std::cout << std::endl;
 }
-*/
+
 void Game::placeMarker()
 {
     int choice{ 0 };
@@ -105,13 +107,13 @@ void Game::placeMarkerMark()
 
         else if (choice <= 6 && choice >= 4) {
             if (checkPositionOpen(SECONDROW, (2 * choice) - 8, correctChoice)) {
-                grid[SECONDROW][(2 * choice) - 8] = " x ";                      // 4 5 6 --- choice
+                gridMarker[SECONDROW][(2 * choice) - 8].takeMark(whichPlayer);                      // 4 5 6 --- choice
             }                                                                   // 0 2 4 --- grid column index
         }                                                                       // 2n - 4 gives the column index for given choice
 
         else if (choice <= 9 && choice >= 7) {
             if (checkPositionOpen(THIRDROW, (2 * choice) - 14, correctChoice)) {
-                grid[THIRDROW][(2 * choice) - 14] = " x ";                      // 7 8 9 --- choice
+                gridMarker[THIRDROW][(2 * choice) - 14].takeMark(whichPlayer);                      // 7 8 9 --- choice
             }                                                                   // 0 2 4 --- grid column index
         }                                                                       // 2n-14 --- gives the column index for given choice
         else
@@ -146,7 +148,7 @@ bool Game::checkPositionOpenMarker(ROW row, int column, bool& correctChoice)
     else{
 
         std::cout << "This position has already been, used. Please make another choice" << std::endl;
-        printGrid();
+        printGridMarker();
         return correctChoice;
     }
 

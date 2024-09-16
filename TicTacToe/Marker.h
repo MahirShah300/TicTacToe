@@ -1,6 +1,11 @@
 #pragma once
-#include "Game.h"
+#include "string"
 
+
+enum PLAYER {
+	PLAYERONE,
+	PLAYERTWO
+};
 
 class Marker
 {

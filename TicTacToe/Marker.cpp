@@ -12,9 +12,10 @@ void Marker::setMark(std::string mark)
 void Marker::takeMark(PLAYER player)
 {
 	if (player == PLAYERONE)
-		mark = " X ";
+		setMark(" X ");
 	else
-		mark = " O ";
+		setMark(" O ");
+	isEmpty = false;
 }
 
 bool Marker::getIsEmpty()

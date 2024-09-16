@@ -2,8 +2,7 @@
 #include <array>
 #include "string"
 #include <iostream>
-
-class Marker;
+#include "Marker.h"
 
 enum ROW {
 	FIRSTROW = 0,
@@ -11,10 +10,6 @@ enum ROW {
 	THIRDROW = 4,
 };
 
-enum PLAYER {
-	PLAYERONE,
-	PLAYERTWO
-};
 
 class Game
 {
