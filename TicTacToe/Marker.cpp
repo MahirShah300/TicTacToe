@@ -4,6 +4,11 @@ Marker::Marker() : mark{"   "}, isEmpty{true}
 {
 }
 
+void Marker::setMark(std::string mark)
+{
+	this->mark = mark;
+}
+
 void Marker::takeMark(PLAYER player)
 {
 	if (player == PLAYERONE)

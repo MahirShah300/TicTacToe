@@ -13,6 +13,20 @@ Game::Game() : whichPlayer{PLAYERONE}
             grid[i] = { "-----------" };
     }
 
+    for (int i = 0; i < 5; i++)
+    {
+        if (i % 2 == 0) {
+            for (int j = 0; j < 5; j++) {
+                if (j % 2 == 0)
+                    gridMarker[i][j].setMark("   ");
+                else
+                    gridMarker[i][j].setMark("|");
+            }
+        }
+        else
+            for (int j = 0; j < 5; j++)
+                gridMarker[i][j].setMark("-----------");
+    }
 }
 
 void Game::printGrid()
