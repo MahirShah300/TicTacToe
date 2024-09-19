@@ -15,12 +15,17 @@ void Marker::takeMark(PLAYER player)
 		setMark(" X ");
 	else
 		setMark(" O ");
-	isEmpty = false;
+	changeIsEmpty();
 }
 
 bool Marker::getIsEmpty()
 {
 	return isEmpty;
+}
+
+void Marker::changeIsEmpty()
+{
+	this->isEmpty = !isEmpty;
 }
 
 std::string Marker::getMark()

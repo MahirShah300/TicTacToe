@@ -15,6 +15,7 @@ public:
 	void setMark(std::string mark);
 	void takeMark(PLAYER player);
 	bool getIsEmpty();
+	void changeIsEmpty();
 	std::string getMark();
 
 private:

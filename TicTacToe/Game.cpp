@@ -106,13 +106,13 @@ void Game::placeMarkerMark()
         }                                                                       // 2n - 2 gives the column index for given choice
 
         else if (choice <= 6 && choice >= 4) {
-            if (checkPositionOpen(SECONDROW, (2 * choice) - 8, correctChoice)) {
+            if (checkPositionOpenMarker(SECONDROW, (2 * choice) - 8, correctChoice)) {
                 gridMarker[SECONDROW][(2 * choice) - 8].takeMark(whichPlayer);                      // 4 5 6 --- choice
             }                                                                   // 0 2 4 --- grid column index
         }                                                                       // 2n - 4 gives the column index for given choice
 
         else if (choice <= 9 && choice >= 7) {
-            if (checkPositionOpen(THIRDROW, (2 * choice) - 14, correctChoice)) {
+            if (checkPositionOpenMarker(THIRDROW, (2 * choice) - 14, correctChoice)) {
                 gridMarker[THIRDROW][(2 * choice) - 14].takeMark(whichPlayer);                      // 7 8 9 --- choice
             }                                                                   // 0 2 4 --- grid column index
         }                                                                       // 2n-14 --- gives the column index for given choice
