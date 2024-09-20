@@ -20,9 +20,9 @@ int main()
 
     Game game;
 
-    game.printGridMarker();
-    game.placeMarkerMark();
-    game.printGridMarker();
-    game.placeMarkerMark();
-    game.printGridMarker();
+    game.printGrid();
+    game.placeMarker();
+    game.printGrid();
+    game.placeMarker();
+    game.printGrid();
 }
