@@ -2,6 +2,7 @@
 #include <array>
 #include "string"
 #include <iostream>
+#include "Marker.h"
 
 enum ROW {
 	FIRSTROW = 0,
@@ -9,10 +10,6 @@ enum ROW {
 	THIRDROW = 4,
 };
 
-enum PLAYER {
-	PLAYERONE,
-	PLAYERTWO
-};
 
 class Game
 {
@@ -23,7 +20,7 @@ public:
 	bool checkPositionOpen(ROW row, int column, bool& correctChoice);
 
 private:
-	std::array< std::array<std::string, 5>, 5> grid{ "" };
+	std::array< std::array<Marker, 5>, 5> grid;
 	PLAYER whichPlayer;
 
 };

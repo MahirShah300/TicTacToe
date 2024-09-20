@@ -1,23 +1,26 @@
 #pragma once
 #include "string"
 
-enum MARKER
-{
-	EMPTY = '   ',
-	X = ' x ',
-	O = ' o '
+
+enum PLAYER {
+	PLAYERONE,
+	PLAYERTWO
 };
 
 class Marker
 {
 public:
 
+	Marker();
+	void setMark(std::string mark);
+	void takeMark(PLAYER player);
 	bool getIsEmpty();
-	MARKER getxOrO();
+	void changeIsEmpty();
+	std::string getMark();
 
 private:
 
 	bool isEmpty;
-	MARKER xOrO;
+	std::string mark;
 };
 
