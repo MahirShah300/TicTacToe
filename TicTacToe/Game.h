@@ -15,13 +15,17 @@ class Game
 {
 public:
 	Game();
-	void printGrid();
+	void printGrid() const;
 	void placeMarker();
 	bool checkPositionOpen(ROW row, int column, bool& correctChoice);
+	void gameLoop();
+	void switchPlayer();
+	PLAYER whichPlayer() const;
 
 private:
 	std::array< std::array<Marker, 5>, 5> grid;
-	PLAYER whichPlayer;
+	PLAYER currentPlayer;
+	bool winnerExists;
 
 };
 

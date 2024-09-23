@@ -3,7 +3,7 @@
 
 
 
-Game::Game() : whichPlayer{PLAYERONE}
+Game::Game() : currentPlayer{PLAYERONE}, winnerExists{false}
 {
 
     for (int i = 0; i < 5; i++)
@@ -24,7 +24,7 @@ Game::Game() : whichPlayer{PLAYERONE}
 
 
 
-void Game::printGrid()
+void Game::printGrid() const
 {
     for (auto row : grid)
     {
@@ -51,19 +51,19 @@ void Game::placeMarker()
 
         else if (choice <= 3 && choice >= 1) {
             if (checkPositionOpen(FIRSTROW, (2 * choice) - 2, correctChoice)) {
-                grid[FIRSTROW][(2 * choice) - 2].takeMark(whichPlayer);                       // 1 2 3 --- choice
+                grid[FIRSTROW][(2 * choice) - 2].takeMark(currentPlayer);                       // 1 2 3 --- choice
             }                                                                   // 0 2 4 --- grid column index
         }                                                                       // 2n - 2 gives the column index for given choice
 
         else if (choice <= 6 && choice >= 4) {
             if (checkPositionOpen(SECONDROW, (2 * choice) - 8, correctChoice)) {
-                grid[SECONDROW][(2 * choice) - 8].takeMark(whichPlayer);                      // 4 5 6 --- choice
+                grid[SECONDROW][(2 * choice) - 8].takeMark(currentPlayer);                      // 4 5 6 --- choice
             }                                                                   // 0 2 4 --- grid column index
         }                                                                       // 2n - 4 gives the column index for given choice
 
         else if (choice <= 9 && choice >= 7) {
             if (checkPositionOpen(THIRDROW, (2 * choice) - 14, correctChoice)) {
-                grid[THIRDROW][(2 * choice) - 14].takeMark(whichPlayer);                      // 7 8 9 --- choice
+                grid[THIRDROW][(2 * choice) - 14].takeMark(currentPlayer);                      // 7 8 9 --- choice
             }                                                                   // 0 2 4 --- grid column index
         }                                                                       // 2n-14 --- gives the column index for given choice
         else
@@ -91,3 +91,37 @@ bool Game::checkPositionOpen(ROW row, int column, bool& correctChoice)
 
 
 }
+
+void Game::gameLoop()
+{
+    while (!winnerExists) {
+        std::cout << "Player one:" << std::endl;
+        printGrid();
+        placeMarker();
+        switchPlayer();
+        std::cout << "Player two:" << std::endl;
+        printGrid();
+        placeMarker();
+        switchPlayer();
+
+    }
+}
+
+PLAYER Game::whichPlayer() const
+{
+    return currentPlayer;
+}
+
+void Game::switchPlayer()
+{
+    if (whichPlayer() == PLAYERONE)
+    {
+        currentPlayer = PLAYERTWO;
+    }
+    
+    else 
+    {
+        currentPlayer = PLAYERONE;
+    }
+}
+

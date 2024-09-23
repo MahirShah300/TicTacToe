@@ -14,9 +14,9 @@ public:
 	Marker();
 	void setMark(std::string mark);
 	void takeMark(PLAYER player);
-	bool getIsEmpty();
+	bool getIsEmpty() const;
 	void changeIsEmpty();
-	std::string getMark();
+	std::string getMark() const;
 
 private:
 

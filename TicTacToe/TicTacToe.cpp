@@ -7,16 +7,6 @@
 
 int main()
 {
-    /*
-    Game game;
-    game.printGrid();
-
-    game.placeMarker();
-    game.printGrid();
-
-    game.placeMarker();
-    game.printGrid();
-    */
 
     Game game;
 

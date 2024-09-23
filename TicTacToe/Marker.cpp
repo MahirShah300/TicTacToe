@@ -18,7 +18,7 @@ void Marker::takeMark(PLAYER player)
 	changeIsEmpty();
 }
 
-bool Marker::getIsEmpty()
+bool Marker::getIsEmpty() const 
 {
 	return isEmpty;
 }
@@ -28,7 +28,7 @@ void Marker::changeIsEmpty()
 	this->isEmpty = !isEmpty;
 }
 
-std::string Marker::getMark()
+std::string Marker::getMark() const
 {
 	return mark;
 }
