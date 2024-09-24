@@ -12,6 +12,7 @@ int main()
 
     game.printGrid();
     game.placeMarker();
+    game.switchPlayer();
     game.printGrid();
     game.placeMarker();
     game.printGrid();

@@ -107,14 +107,19 @@ void Game::gameLoop()
     }
 }
 
-PLAYER Game::whichPlayer() const
+PLAYER Game::getCurrentPlayer() const
 {
     return currentPlayer;
 }
 
+void Game::checkWinner()
+{
+    ;
+}
+
 void Game::switchPlayer()
 {
-    if (whichPlayer() == PLAYERONE)
+    if (getCurrentPlayer() == PLAYERONE)
     {
         currentPlayer = PLAYERTWO;
     }

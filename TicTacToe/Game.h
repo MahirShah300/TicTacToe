@@ -20,7 +20,8 @@ public:
 	bool checkPositionOpen(ROW row, int column, bool& correctChoice);
 	void gameLoop();
 	void switchPlayer();
-	PLAYER whichPlayer() const;
+	PLAYER getCurrentPlayer() const;
+	void checkWinner();
 
 private:
 	std::array< std::array<Marker, 5>, 5> grid;
