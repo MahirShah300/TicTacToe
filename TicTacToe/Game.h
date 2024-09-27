@@ -16,6 +16,7 @@ class Game
 public:
 	Game();
 	void printGrid() const;
+	void printGridString() const;
 	void placeMarker();
 	bool checkPositionOpen(ROW row, int column, bool& correctChoice);
 	void gameLoop();
@@ -25,6 +26,7 @@ public:
 
 private:
 	std::array< std::array<Marker, 5>, 5> grid;
+	std::array< std::array<std::string, 5>, 5> gridString;
 	PLAYER currentPlayer;
 	bool winnerExists;
 

@@ -20,6 +20,23 @@ Game::Game() : currentPlayer{PLAYERONE}, winnerExists{false}
             for (int j = 0; j < 5; j++)
                 grid[i][j].setMark("--");
     }
+
+    for (int i = 0; i < 5; i++)
+    {
+        if (i % 2 == 0)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                if (j % 2 == 0)
+                    gridString[i][j] = "   ";
+                else
+                    gridString[i][j] = "|";
+            }
+        }
+        else
+            for (int j = 0; j < 5; j++)
+                gridString[i][j] = "--";
+    }
 }
 
 
@@ -30,6 +47,17 @@ void Game::printGrid() const
     {
         for (auto element : row)
             std::cout << element.getMark();
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+void Game::printGridString() const
+{
+    for (auto row : gridString)
+    {
+        for (auto element : row)
+            std::cout << element;
         std::cout << std::endl;
     }
     std::cout << std::endl;

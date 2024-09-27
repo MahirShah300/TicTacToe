@@ -1,5 +1,11 @@
 #include "Player.h"
 
-void Player::setMark(std::array<std::array<Marker, 5>, 5>& grid)
+
+void Player::placeMark(std::array<std::array<std::string, 5>, 5>& grid, int location)
 {
+}
+
+void Player::setMark(std::string mark)
+{
+	this->mark = mark;
 }

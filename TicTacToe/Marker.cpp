@@ -36,3 +36,5 @@ std::string Marker::getMark() const
 // Make a player class that has it's own board and keeps record of where he chooses. if three in a row, he wins. 
 // Also make is so player has function that takes board as a reference and places mark, rather than board setting itself
 // Also maybe look into GUI
+//magic enums#
+//change everything, players class should have functions to change the board, remove marker classs.
