@@ -3,6 +3,7 @@
 #include "string"
 #include <iostream>
 #include "Marker.h"
+#include <map>
 
 enum ROW {
 	FIRSTROW = 0,
@@ -23,12 +24,15 @@ public:
 	void switchPlayer();
 	PLAYER getCurrentPlayer() const;
 	void checkWinner();
+	std::array< std::array<std::string, 5>, 5> &getGridString();
+	std::map<int, std::pair<ROW, int>> &getMap();
 
 private:
 	std::array< std::array<Marker, 5>, 5> grid;
 	std::array< std::array<std::string, 5>, 5> gridString;
 	PLAYER currentPlayer;
 	bool winnerExists;
+	std::map<int, std::pair<ROW, int>> locationToIndices;
 
 };
 
