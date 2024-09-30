@@ -3,7 +3,7 @@
 #include <array>
 #include <map>
 #include "string"
-
+#include "Utils.h"
 
 
 
@@ -11,7 +11,7 @@ class Player
 {
 
 public:
-	void placeMark(std::array< std::array<std::string, 5>, 5>& grid, int location, std::map<int, std::pair<int, int>> &locationToIndices);
+	void placeMark(std::array< std::array<std::string, 5>, 5>& grid, int location);
 	void setMark(std::string mark);
 	Player();
 

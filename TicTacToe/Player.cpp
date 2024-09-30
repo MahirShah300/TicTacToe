@@ -1,7 +1,7 @@
 #include "Player.h"
 
 
-void Player::placeMark(std::array<std::array<std::string, 5>, 5>& grid, int location, std::map<int, std::pair<int, int>>& locationToIndices)
+void Player::placeMark(std::array<std::array<std::string, 5>, 5>& grid, int location)
 {
 	grid[locationToIndices[location].first][locationToIndices[location].second] = playerMark;
 }
@@ -18,3 +18,4 @@ Player::Player() : playerMark{""}
 	std::cin >> mark;
 	setMark(mark);	
 }
+

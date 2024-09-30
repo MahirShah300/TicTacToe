@@ -1,6 +1,4 @@
 #include "Game.h"
-#include "Marker.h"
-
 
 
 Game::Game() : currentPlayer{PLAYERONE}, winnerExists{false}
@@ -38,23 +36,23 @@ Game::Game() : currentPlayer{PLAYERONE}, winnerExists{false}
                 gridString[i][j] = "--";
     }
     
-    for (int i = 1; i < 10; i++)
-    {
-        if (i < 4)
-        {
-            locationToIndices.emplace(i, std::pair<ROW, int>{FIRSTROW, (2 * i) - 2 });
-        }
+    //for (int i = 1; i < 10; i++)
+    //{
+    //    if (i < 4)
+    //    {
+    //        locationToIndices.emplace(i, std::pair<ROW, int>{FIRSTROW, (2 * i) - 2 });
+    //    }
 
-        else if (i < 7)
-        {
-            locationToIndices.emplace(i, std::pair<ROW, int>{SECONDROW, (2 * i) - 8});
-        }
+    //    else if (i < 7)
+    //    {
+    //        locationToIndices.emplace(i, std::pair<ROW, int>{SECONDROW, (2 * i) - 8});
+    //    }
 
-        else
-        {
-            locationToIndices.emplace(i, std::pair<ROW, int>{THIRDROW, (2 * i) - 14});
-        }
-    }
+    //    else
+    //    {
+    //        locationToIndices.emplace(i, std::pair<ROW, int>{THIRDROW, (2 * i) - 14});
+    //    }
+    //}
 
 }
 
@@ -164,15 +162,15 @@ void Game::checkWinner()
     ;
 }
 
-std::array<std::array<std::string, 5>, 5> Game::&getGridString()
+std::array<std::array<std::string, 5>, 5> Game::getGridString()
 {
     return gridString;
 }
 
-std::map<int, std::pair<ROW, int>> Game::getMap()
-{
-    return locationToIndices;
-}
+//std::map<int, std::pair<ROW, int>> Game::getMap()
+//{
+//    return locationToIndices;
+//}
 
 void Game::switchPlayer()
 {
