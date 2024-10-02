@@ -2,6 +2,7 @@
 //
 
 #include "TicTacToe.h"
+#include "Utils.h"
 
 //std::map<int, std::pair<ROW, int>> locationToIndices;
 //
@@ -31,7 +32,10 @@ int main()
 
 	Game game;
 	Player playerOne;
-	initialiseMap();
+	Map testMap;
+	
+
+
 	
 	//playerOne.placeMark(game.getGridString(), 1, game.getMap());
 

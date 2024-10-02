@@ -7,9 +7,3 @@ enum ROW {
 	SECONDROW = 2,
 	THIRDROW = 4,
 };
-
-extern std::map<int, std::pair<ROW, int>> locationToIndices;
-
-void initialiseMap();
-
-// Think about encapsulation and scope of functions

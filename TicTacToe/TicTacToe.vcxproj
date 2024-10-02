@@ -128,13 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="LocationMap.cpp" />
     <ClCompile Include="Marker.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TicTacToe.cpp" />
-    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="LocationMap.h" />
     <ClInclude Include="Marker.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TicTacToe.h" />

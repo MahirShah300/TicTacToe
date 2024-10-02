@@ -4,6 +4,7 @@
 #include <map>
 #include "string"
 #include "Utils.h"
+#include "LocationMap.h"
 
 
 
@@ -11,7 +12,7 @@ class Player
 {
 
 public:
-	void placeMark(std::array< std::array<std::string, 5>, 5>& grid, int location);
+	void placeMark(std::array< std::array<std::string, 5>, 5>& grid, int location, Map& LocationToIndicesMap);
 	void setMark(std::string mark);
 	Player();
 
@@ -21,6 +22,3 @@ private:
 	std::string playerMark;
 
 };
-
-// function that takes user input to select position of where to place mark
-// look into maps c++ for the postion, so each number to a pair of indexes instead of using formula

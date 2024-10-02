@@ -1,9 +1,10 @@
 #include "Player.h"
 
 
-void Player::placeMark(std::array<std::array<std::string, 5>, 5>& grid, int location)
+void Player::placeMark(std::array<std::array<std::string, 5>, 5>& grid, int location, Map& locationToIndicesMap)
 {
-	grid[locationToIndices[location].first][locationToIndices[location].second] = playerMark;
+	grid[locationToIndicesMap.getLocationToIndices()[location].first][locationToIndicesMap.getLocationToIndices()[location].second] = playerMark;
+
 }
 
 void Player::setMark(std::string mark)
