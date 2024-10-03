@@ -162,7 +162,7 @@ void Game::checkWinner()
     ;
 }
 
-std::array<std::array<std::string, 5>, 5> Game::getGridString()
+std::array<std::array<std::string, 5>, 5>& Game::getGridString()
 {
     return gridString;
 }

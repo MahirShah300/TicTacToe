@@ -25,8 +25,7 @@ public:
 	void switchPlayer();
 	PLAYER getCurrentPlayer() const;
 	void checkWinner();
-	std::array< std::array<std::string, 5>, 5> getGridString();
-	//std::map<int, std::pair<ROW, int>> getMap();
+	std::array< std::array<std::string, 5>, 5>& getGridString();
 
 private:
 	std::array< std::array<Marker, 5>, 5> grid;

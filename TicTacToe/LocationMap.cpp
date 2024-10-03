@@ -20,7 +20,7 @@ Map::Map()
 		}
 	}
 }
-std::map<int, std::pair<ROW, int>> Map::getLocationToIndices() const
+std::map<int, std::pair<ROW, int>>Map::getLocationToIndices() const
 {
 	return locationToIndicesMap;
 }
