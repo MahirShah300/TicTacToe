@@ -14,6 +14,11 @@ void Player::setMark(std::string mark)
 	this->playerMark = mark;
 }
 
+std::string Player::getPlayerMark()
+{
+	return playerMark;
+}
+
 int Player::getNumberOfTurns()
 {
 	return numberOfTurns;

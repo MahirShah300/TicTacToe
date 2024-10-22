@@ -1,7 +1,7 @@
 #include "Game.h"
 
 
-Game::Game() : currentPlayer{PLAYERONE}, winnerExists{false}, playerLocationChoice{0}, playerOneMark{""}, playerTwoMark{""}
+Game::Game() : currentPlayer{PLAYERONE}, winnerExists{false}, playerLocationChoice{0}
 {
 
     for (int i = 0; i < 5; i++)
@@ -141,13 +141,12 @@ void Game::gameLoop()
 {
     while (!winnerExists) {
         std::cout << "Player one:" << std::endl;
-        printGrid();
-        //placeMarker();
-        //switchPlayer();
+        printGridString();
+        playerOne.placeMark(getGridString(), getPlayerLocationChoice(), getMap());
+        checkWinner();
         std::cout << "Player two:" << std::endl;
-        printGrid();
-        //placeMarker();
-        //switchPlayer();
+        printGridString();
+        playerTwo.placeMark(getGridString(), getPlayerLocationChoice(), getMap());
 
     }
 }
@@ -164,15 +163,15 @@ void Game::checkWinner()
 
         for (int i = 0; i < 5; i += 2)
         {
-            if ((gridString[i][0] == playerOneMark && gridString[i][2] == playerOneMark && gridString[i][4] == playerOneMark) ||
-                (gridString[i][0] == playerTwoMark && gridString[i][2] == playerTwoMark && gridString[i][4] == playerTwoMark)) //check rows
+            if ((gridString[i][0] == playerOne.getPlayerMark() && gridString[i][2] == playerOne.getPlayerMark() && gridString[i][4] == playerOne.getPlayerMark()) ||
+                (gridString[i][0] == playerTwo.getPlayerMark() && gridString[i][2] == playerTwo.getPlayerMark() && gridString[i][4] == playerTwo.getPlayerMark())) //check rows
             {
                 winnerExists = !winnerExists;
                 return;
             }
 
-            else if ((gridString[0][i] == playerOneMark && gridString[2][i] == playerOneMark && gridString[4][i] == playerOneMark) ||
-                    (gridString[0][i] == playerTwoMark && gridString[2][0] == playerTwoMark && gridString[4][0] == playerTwoMark)) // check columns
+            else if ((gridString[0][i] == playerOne.getPlayerMark() && gridString[2][i] == playerOne.getPlayerMark() && gridString[4][i] == playerOne.getPlayerMark()) ||
+                    (gridString[0][i] == playerTwo.getPlayerMark() && gridString[2][0] == playerTwo.getPlayerMark() && gridString[4][0] == playerTwo.getPlayerMark())) // check columns
             {
                 winnerExists = !winnerExists;
                 return;
@@ -196,7 +195,7 @@ int Game::getPlayerLocationChoice()
     bool correctChoice{ false };
     while(!correctChoice)
     {
-        std::cout << "Choose where to place the marker: ";
+        std::cout << "Choose where to place the marker: " << std::endl << std::endl; 
         std::cin >> playerLocationChoice;
         if (!checkPositionEmpty(playerLocationChoice))
             std::cout << "This location has already been picked, please pick another" << std::endl;

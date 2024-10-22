@@ -7,13 +7,11 @@ int main()
 {
 
 	Game game;
-	Player playerOne;
-	Player playerTwo;
+	//Player playerOne;
+	//Player playerTwo;
 
-	playerOne.placeMark(game.getGridString(), game.getPlayerLocationChoice(), game.getMap());
-	playerTwo.placeMark(game.getGridString(), game.getPlayerLocationChoice(), game.getMap());
-	
-	Player::getNumberOfTurns();
+	//playerOne.placeMark(game.getGridString(), game.getPlayerLocationChoice(), game.getMap());
+	//playerTwo.placeMark(game.getGridString(), game.getPlayerLocationChoice(), game.getMap());
 
 	//game.printGrid();
 	//game.placeMarker();
@@ -23,6 +21,10 @@ int main()
 	//game.printGrid();
 
 	game.printGridString();
-	std::cout << Player::getNumberOfTurns();
 
 }
+
+
+//TO DO
+//In Game class, improve efficency of check winner. Currently checks if player one won or if player two won after every turn
+//really only need to check the last player to place marker

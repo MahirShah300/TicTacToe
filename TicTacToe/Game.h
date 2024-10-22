@@ -27,11 +27,12 @@ public:
 	bool checkPositionEmpty(int playerLocationChoice);
 	Map getMap();
 
+
 private:
 	std::array< std::array<Marker, 5>, 5> grid;
 	std::array< std::array<std::string, 5>, 5> gridString;
-	std::string playerOneMark;
-	std::string playerTwoMark;
+	Player playerOne;
+	Player playerTwo;
 	int playerLocationChoice;
 	PLAYER currentPlayer;
 	bool winnerExists;
