@@ -9,9 +9,11 @@ int main()
 	Game game;
 	Player playerOne;
 	Player playerTwo;
-	Map testMap;
 
-	playerOne.placeMark(game.getGridString(), 1, testMap);
+	playerOne.placeMark(game.getGridString(), game.getPlayerLocationChoice(), game.getMap());
+	playerTwo.placeMark(game.getGridString(), game.getPlayerLocationChoice(), game.getMap());
+	
+	Player::getNumberOfTurns();
 
 	//game.printGrid();
 	//game.placeMarker();
@@ -21,5 +23,6 @@ int main()
 	//game.printGrid();
 
 	game.printGridString();
+	std::cout << Player::getNumberOfTurns();
 
 }
