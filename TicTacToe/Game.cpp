@@ -1,6 +1,8 @@
 #include "Game.h"
 
 
+bool checkRows(Player player);
+
 Game::Game() : currentPlayer{PLAYERONE}, winnerExists{false}, playerLocationChoice{0}
 {
 
@@ -160,7 +162,10 @@ void Game::checkWinner()
 { 
     if (Player::getNumberOfTurns() >= 5)
     {
+        if (Player::getNumberOfTurns() % 2 != 0)
+        {
 
+        }
         for (int i = 0; i < 5; i += 2)
         {
             if ((gridString[i][0] == playerOne.getPlayerMark() && gridString[i][2] == playerOne.getPlayerMark() && gridString[i][4] == playerOne.getPlayerMark()) ||
@@ -216,6 +221,23 @@ bool Game::checkPositionEmpty(int playerLocationChoice)
         return true;
 }
 
+bool Game::checkRows()
+{
+    for (int i = 0; i < 5; i += 2)
+    {
+        if ((gridString[i][0] == playerOne.getPlayerMark() && gridString[i][2] == playerOne.getPlayerMark() && gridString[i][4] == playerOne.getPlayerMark())) //check rows
+        {
+            winnerExists = !winnerExists;
+            return true;
+        }
+    }
+}
+
+bool Game::checkColumns()
+{
+    return false;
+}
+
 Map Game::getMap()
 {
     return locationToIndicesMap;
@@ -238,4 +260,3 @@ Map Game::getMap()
 //        currentPlayer = PLAYERONE;
 //    }
 //}
-
