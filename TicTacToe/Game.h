@@ -25,6 +25,9 @@ public:
 	std::array< std::array<std::string, 5>, 5>& getGridString();
 	int getPlayerLocationChoice();
 	bool checkPositionEmpty(int playerLocationChoice);
+	bool checkRows(Player& player);
+	bool checkColumns(Player& player);
+	void checkRowsAndColumns(Player& player);
 	Map getMap();
 
 
@@ -36,6 +39,7 @@ private:
 	int playerLocationChoice;
 	PLAYER currentPlayer;
 	bool winnerExists;
+	bool draw;
 	Map locationToIndicesMap;
 
 };

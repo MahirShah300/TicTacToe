@@ -1,9 +1,8 @@
 #include "Game.h"
 
 
-bool checkRows(Player player);
 
-Game::Game() : currentPlayer{PLAYERONE}, winnerExists{false}, playerLocationChoice{0}
+Game::Game() : currentPlayer{PLAYERONE}, winnerExists{false}, playerLocationChoice{0}, draw{false}
 {
 
     for (int i = 0; i < 5; i++)
@@ -141,7 +140,7 @@ void Game::printGridString() const
 
 void Game::gameLoop()
 {
-    while (!winnerExists) {
+    while (!winnerExists && !draw) {
         std::cout << "Player one:" << std::endl;
         printGridString();
         playerOne.placeMark(getGridString(), getPlayerLocationChoice(), getMap());
@@ -149,7 +148,28 @@ void Game::gameLoop()
         std::cout << "Player two:" << std::endl;
         printGridString();
         playerTwo.placeMark(getGridString(), getPlayerLocationChoice(), getMap());
+        checkWinner();
+    }
 
+    if (winnerExists)
+    {
+        if (Player::getNumberOfTurns() % 2 != 0)
+        {
+            std::cout << "Player One Wins" << std::endl;
+            printGridString();
+        }
+
+        else
+        {
+            std::cout << "Player Two Wins" << std::endl;
+            printGridString();
+        }
+    }
+
+    if (draw)
+    {
+        std::cout << "Draw, No one wins" << std::endl;
+        printGridString();
     }
 }
 
@@ -164,28 +184,33 @@ void Game::checkWinner()
     {
         if (Player::getNumberOfTurns() % 2 != 0)
         {
-
+            checkRowsAndColumns(playerOne);
         }
-        for (int i = 0; i < 5; i += 2)
+
+        else
         {
-            if ((gridString[i][0] == playerOne.getPlayerMark() && gridString[i][2] == playerOne.getPlayerMark() && gridString[i][4] == playerOne.getPlayerMark()) ||
-                (gridString[i][0] == playerTwo.getPlayerMark() && gridString[i][2] == playerTwo.getPlayerMark() && gridString[i][4] == playerTwo.getPlayerMark())) //check rows
-            {
-                winnerExists = !winnerExists;
-                return;
-            }
-
-            else if ((gridString[0][i] == playerOne.getPlayerMark() && gridString[2][i] == playerOne.getPlayerMark() && gridString[4][i] == playerOne.getPlayerMark()) ||
-                    (gridString[0][i] == playerTwo.getPlayerMark() && gridString[2][0] == playerTwo.getPlayerMark() && gridString[4][0] == playerTwo.getPlayerMark())) // check columns
-            {
-                winnerExists = !winnerExists;
-                return;
-            }
+            checkRowsAndColumns(playerTwo);
         }
+        //for (int i = 0; i < 5; i += 2)
+        //{
+        //    if ((gridString[i][0] == playerOne.getPlayerMark() && gridString[i][2] == playerOne.getPlayerMark() && gridString[i][4] == playerOne.getPlayerMark()) ||
+        //        (gridString[i][0] == playerTwo.getPlayerMark() && gridString[i][2] == playerTwo.getPlayerMark() && gridString[i][4] == playerTwo.getPlayerMark())) //check rows
+        //    {
+        //        winnerExists = !winnerExists;
+        //        return;
+        //    }
+
+        //    else if ((gridString[0][i] == playerOne.getPlayerMark() && gridString[2][i] == playerOne.getPlayerMark() && gridString[4][i] == playerOne.getPlayerMark()) ||
+        //            (gridString[0][i] == playerTwo.getPlayerMark() && gridString[2][i] == playerTwo.getPlayerMark() && gridString[4][i] == playerTwo.getPlayerMark())) // check columns
+        //    {
+        //        winnerExists = !winnerExists;
+        //        return;
+        //    }
+        //}
 
         if (Player::getNumberOfTurns() == 9)
         {
-            ;
+            draw = !draw;
         }
     }
 }
@@ -221,21 +246,49 @@ bool Game::checkPositionEmpty(int playerLocationChoice)
         return true;
 }
 
-bool Game::checkRows()
+bool Game::checkRows(Player& player)
 {
     for (int i = 0; i < 5; i += 2)
     {
-        if ((gridString[i][0] == playerOne.getPlayerMark() && gridString[i][2] == playerOne.getPlayerMark() && gridString[i][4] == playerOne.getPlayerMark())) //check rows
+        if ((gridString[i][0] == player.getPlayerMark() && gridString[i][2] == player.getPlayerMark() && gridString[i][4] == player.getPlayerMark())) //check rows
         {
             winnerExists = !winnerExists;
             return true;
         }
     }
+
+    return false;
 }
 
-bool Game::checkColumns()
+bool Game::checkColumns(Player& player)
 {
+    for (int i = 0; i < 5; i += 2)
+    {
+        if ((gridString[0][i] == player.getPlayerMark() && gridString[2][i] == player.getPlayerMark() && gridString[4][i] == player.getPlayerMark())) //check columns
+        {
+            winnerExists = !winnerExists;
+            return true;
+        }
+    }
+
     return false;
+}
+
+void Game::checkRowsAndColumns(Player& player)
+{
+    for (int i = 0; i < 5; i += 2)
+    {
+        if ((gridString[i][0] == player.getPlayerMark() && gridString[i][2] == player.getPlayerMark() && gridString[i][4] == player.getPlayerMark())) //check rows
+        {
+            winnerExists = !winnerExists;
+        }
+
+        else if ((gridString[0][i] == player.getPlayerMark() && gridString[2][i] == player.getPlayerMark() && gridString[4][i] == player.getPlayerMark())) //check columns
+        {
+            winnerExists = !winnerExists;
+        }
+            
+    }
 }
 
 Map Game::getMap()

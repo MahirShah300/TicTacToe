@@ -20,11 +20,11 @@ int main()
 	//game.placeMarker();
 	//game.printGrid();
 
-	game.printGridString();
+	//game.printGridString();
+	game.gameLoop();
 
 }
 
 
 //TO DO
-//In Game class, improve efficency of check winner. Currently checks if player one won or if player two won after every turn
-//really only need to check the last player to place marker
+// Debug CheckWInner and related function. currently after 3 in a row game continues and no winnerm declared

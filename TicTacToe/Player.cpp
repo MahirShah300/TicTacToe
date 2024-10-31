@@ -1,6 +1,19 @@
 #include "Player.h"
 
 
+
+
+Player::Player() : playerMark{ "" }
+{
+	std::string mark{ "" };
+	std::cout << "Which mark do you want to use?" << std::endl;
+	std::cin >> mark;
+	setMark(" " + mark + " ");
+}
+
+int Player::numberOfTurns = 0;
+
+
 void Player::placeMark(std::array<std::array<std::string, 5>, 5>& grid, int playerLocationChoice, const Map& locationToIndicesMap)
 {
 	grid[static_cast<int>(locationToIndicesMap.getLocationToIndices()[playerLocationChoice].first)][static_cast<int>(locationToIndicesMap.getLocationToIndices()[playerLocationChoice].second)] = playerMark;
@@ -42,13 +55,5 @@ bool Player::checkWinner()
 
 
 
-Player::Player() : playerMark{""}
-{
-	std::string mark{ "" };
-	std::cout << "Which mark do you want to use?" << std::endl;
-	std::cin >> mark;
-	setMark(" " + mark + " ");
-}
 
-int Player::numberOfTurns = 0;
 
