@@ -27,8 +27,9 @@ public:
 	bool checkPositionEmpty(int playerLocationChoice);
 	bool checkRows(Player& player);
 	bool checkColumns(Player& player);
-	void checkRowsAndColumns(Player& player);
+	bool checkRowsAndColumns(Player& player);
 	Map getMap();
+
 
 
 private:
